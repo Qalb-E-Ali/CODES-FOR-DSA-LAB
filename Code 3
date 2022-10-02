@@ -1,0 +1,48 @@
+print("This program evaluate a user entered prefix equation.")
+from collections import deque
+stack = deque()
+class Stack:
+    def _init_(self):
+        self.container = deque()
+    def is_operand(self,c):
+        return c.isdigit()
+    def reverse(self,val):
+        i = len(val) - 1
+        return i
+    def isOperator(self,val):
+        operators = ['*','^','/','-','+','(',')']
+        if val in operators:
+            return True
+        else:
+            return False
+    def evaluate(self,expression):
+        stack = []
+        for n in expression[::-1]:
+            if p.is_operand(n):
+                stack.append(int(n))
+    
+            else:
+                num1 = stack.pop()
+                num2 = stack.pop()
+    
+                if n == '*':
+                    stack.append(num1 * num2)
+    
+                elif n == '^':
+                    stack.append(num1 ^ num2)
+    
+                elif n == '/':
+                    stack.append(num1 / num2)
+    
+                elif n == '-':
+                    stack.append(num1 - num2)
+                elif n == '+':
+                    stack.append(num1+num2)
+        return stack.pop()
+    
+
+p = Stack()
+string = input('Please enter a prefix equation: ')
+print('The prefix equation: '+ string)
+print('Answer after simplification: ', end="")
+print(p.evaluate(string))
